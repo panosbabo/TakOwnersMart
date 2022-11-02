@@ -25,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.home:
-                    Intent homepage = new Intent(MainActivity.this, MainActivity.class);
-                    startActivity(homepage);
+                    changeScreen(new home_page());
+//                    Intent homepage = new Intent(MainActivity.this, MainActivity.class);
+//                    startActivity(homepage);
                     break;
                 case R.id.profile:
                     changeScreen(new profile_page());
