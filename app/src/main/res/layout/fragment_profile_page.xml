@@ -1,15 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profile_page">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is the Profile page"
-        android:layout_gravity="center"/>
+
+    <ScrollView
+        android:id="@+id/scrollview_prof"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F5F5F5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="360dp"
+                        android:background="@drawable/top_background_profile"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/userimage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="My Name"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/userimage"
+                        app:layout_constraintStart_toStartOf="@+id/userimage"
+                        app:layout_constraintTop_toBottomOf="@+id/userimage" />
+
+                    <TextView
+                        android:id="@+id/emailuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="panoulis@panos.com"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/username"
+                        app:layout_constraintStart_toStartOf="@+id/username"
+                        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+                    <Button
+                        android:id="@+id/editprofile"
+                        android:layout_width="129dp"
+                        android:layout_height="43dp"
+                        android:text="Edit Profile"
+                        android:textSize="12dp"
+                        app:layout_constraintBottom_toTopOf="@+id/linearl2"
+                        app:layout_constraintEnd_toEndOf="@+id/emailuser"
+                        app:layout_constraintStart_toStartOf="@+id/emailuser"
+                        app:layout_constraintTop_toBottomOf="@+id/emailuser" />
+
+                    <LinearLayout
+                        android:id="@+id/linearl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/white_background_profile"
+                        android:elevation="3dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/emailuser">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/usernametext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Username:"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+                                android:textColor="#182693"
+                                android:textAlignment="viewStart"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:id="@+id/usernameinsert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Panos"
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp"
+                                android:textAlignment="viewEnd"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/line1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#D9D9D9" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/emailtext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Email:"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+                                android:textColor="#182693"
+                                android:textAlignment="viewStart"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:id="@+id/emailinsert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="panoulis@panos.com"
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp"
+                                android:textAlignment="viewEnd"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/line2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#D9D9D9" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/guitartext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Guitar:"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+                                android:textColor="#182693"
+                                android:textAlignment="viewStart"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:id="@+id/guitarinsert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Takamine - P4DC"
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp"
+                                android:textAlignment="viewEnd"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/line3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#D9D9D9" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/addresstext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Address:"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="-55dp"
+                                android:textSize="18sp"
+                                android:textColor="#182693"
+                                android:textAlignment="viewStart"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:id="@+id/addressinsert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:autoSizeTextType="uniform"
+                                android:text="North Circular Road, Dublin Ireland"
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp"
+                                android:textAlignment="viewEnd"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/line4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#D9D9D9" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

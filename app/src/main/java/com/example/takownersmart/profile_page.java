@@ -1,63 +1,58 @@
 package com.example.takownersmart;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link profile_page#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+import androidx.fragment.app.Fragment;
+
 public class profile_page extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    ImageView userImage;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment profile_page.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static profile_page newInstance(String param1, String param2) {
-        profile_page fragment = new profile_page();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+
+    public profile_page(){
+        // require a empty public constructor
     }
 
-    public profile_page() {
-        // Required empty public constructor
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        View rootView =inflater.inflate(R.layout.fragment_profile_page, container, false);
+        ImageView userView = (ImageView) rootView.findViewById(R.id.userimage);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_page, container, false);
+        userView.setImageResource(R.drawable.small_icon);
+
+
+        return rootView;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK) {
+                int result = data.getIntExtra("result", 0);
+                //result is the code of the picked image
+                //code to change profile picture goes here
+            }
+        }
+
+    }
+
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//
+//        View rootView =inflater.inflate(R.layout.fragment_profile_page, container, false);
+//        ImageView userView = (ImageView) rootView.findViewById(R.id.userimage);
+//        // Inflate the layout for this fragment
+//        userView.setImageResource(R.drawable.ic_baseline_home_24);
+//
+//        return rootView;
+//    }
 }
