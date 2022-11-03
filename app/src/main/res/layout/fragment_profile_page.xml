@@ -247,7 +247,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:autoSizeTextType="uniform"
-                                android:text="North Circular Road, Dublin Ireland"
+                                android:text="Dublin, Ireland"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp"
                                 android:textAlignment="viewEnd"
