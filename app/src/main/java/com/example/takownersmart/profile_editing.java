@@ -8,6 +8,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +24,7 @@ import android.widget.TextView;
  * Use the {@link settings_page#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileEditing extends Fragment {
+public class profile_editing extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +35,10 @@ public class ProfileEditing extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ProfileEditing() {
+    private EditText et_message;
+    private Button btn_send;
+
+    public profile_editing() {
         // Required empty public constructor
     }
 
@@ -48,12 +53,12 @@ public class ProfileEditing extends Fragment {
      * @return A new instance of fragment settings_page.
      */
     // TODO: Rename and change types and number of parameters
-    public static settings_page newInstance(String param1, String param2) {
-        settings_page fragment = new settings_page();
+    public profile_editing newInstance(String param1, String param2) {
+        profile_editing fragment = new profile_editing();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -68,10 +73,26 @@ public class ProfileEditing extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_editing, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_editing, container, false);
+
+        et_message = view.findViewById(R.id.usernameinsert);
+        btn_send = view.findViewById(R.id.update_prof_btn);
+
+        btn_send.setOnClickListener((v) -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("key", et_message.getText().toString());
+                profile_page fragment = new profile_page();
+                fragment.setArguments(bundle);
+                getChildFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment);
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.frame_layout, new profile_page());
+                fr.commit();
+        });
+
+
+        return view;
     }
 }
