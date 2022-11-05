@@ -3,12 +3,18 @@ package com.example.takownersmart;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,7 +24,31 @@ public class profile_page extends Fragment {
     public profile_page(){
         // require a empty public constructor
     }
-    @Nullable
+
+    private static final String TAG = "profile_page";
+    private TextView txt_result;
+
+    ActivityResultLauncher<Intent> activityLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            Log.d(TAG,"OnActivityResult");
+                            if(result.getResultCode() == 78){
+                                Intent intent = result.getData();
+                                if(intent != null){
+                                    // Extract data here
+                                    String data = intent.getStringExtra("result");
+                                    txt_result.setText(data);
+                                }
+                            }
+                            else{
+                                txt_result.setText("Something terrible happened!");
+                            }
+                        }
+                    }
+            );
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
