@@ -18,8 +18,8 @@ public class profile_editing_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_editing_page);
 
-        et_message = (EditText) findViewById(R.id.usernameinsert);
-        btn_send = (Button) findViewById(R.id.update_prof_btn);
+        et_message = findViewById(R.id.usernameinsert);
+        btn_send = findViewById(R.id.update_prof_btn);
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override

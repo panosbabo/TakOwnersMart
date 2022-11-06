@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="-20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="Username:"
@@ -144,7 +145,7 @@
                 android:textSize="16sp"
                 android:hint="Enter home address"
                 android:textAlignment="viewEnd"
-                android:inputType="textPersonName"/>
+                android:inputType="textPostalAddress"/>
 
         </LinearLayout>
 
@@ -183,8 +184,7 @@
                 android:ems="10"
                 android:textSize="16sp"
                 android:hint="Enter guitar model"
-                android:textAlignment="viewEnd"
-                android:inputType="textPersonName"/>
+                android:textAlignment="viewEnd"/>
 
         </LinearLayout>
 

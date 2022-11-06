@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link settings_page#newInstance} factory method to
+ * Use the {@link profile_editing#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class profile_editing extends Fragment {
