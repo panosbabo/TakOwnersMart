@@ -13,6 +13,20 @@
         android:theme="@style/Theme.TakOwnersMart"
         tools:targetApi="31">
         <activity
+            android:name=".search_guitars"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DisplayInfo"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".profile_editing"
             android:exported="false">
             <meta-data

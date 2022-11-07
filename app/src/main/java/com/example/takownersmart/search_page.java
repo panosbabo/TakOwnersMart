@@ -1,5 +1,7 @@
 package com.example.takownersmart;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,14 +19,46 @@ import android.view.ViewGroup;
  */
 public class search_page extends Fragment {
 
+//    private ListView listView;
+//
+//    // Private data for the Countries and capital names
+//    private String guitarBrand[] = {
+//            "Takamine",
+//            "Takamine",
+//            "Takamine",
+//            "Takamine",
+//            "Takamine",
+//            "Takamine",
+//    };
+//
+//    private String guitarModels[] = {
+//            "P3DC",
+//            "P4DC",
+//            "P5DC",
+//            "P7DC",
+//            "LTD2016",
+//            "LTD2020"
+//    };
+//
+//    // Fetching flag images from drawable
+//    private Integer imageid[] = {
+//            R.drawable.P3DC,
+//            R.drawable.P4DC,
+//            R.drawable.P5DC,
+//            R.drawable.P7DC,
+//            R.drawable.LTD2016,
+//            R.drawable.LTD2020,
+//
+//    };
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+//    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+//    private String mParam1;
+//    private String mParam2;
 
     public search_page() {
         // Required empty public constructor
@@ -40,8 +76,8 @@ public class search_page extends Fragment {
     public static search_page newInstance(String param1, String param2) {
         search_page fragment = new search_page();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,10 +85,14 @@ public class search_page extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+        Intent intent = new Intent(search_page.super.getContext(), search_guitars.class);
+        startActivity(intent);
+
+
     }
 
     @Override
