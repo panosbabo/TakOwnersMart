@@ -10,7 +10,7 @@
         android:id="@+id/button_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="More information"
+        android:text="Detailed information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.294">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,8 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="24sp"
-                android:textColor="#4B0082"/>
+                android:textColor="#4B0082"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="24sp"
-                android:textColor="#4B0082"/>
+                android:textColor="#4B0082"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -87,8 +89,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textSize="24sp"
-                android:textColor="#4B0082"/>
+                android:layout_marginBottom="20dp"
+                android:textColor="#4B0082"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,15 +110,15 @@
                 android:id="@+id/display_owner_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:autoSizeMaxTextSize="24sp"
-                android:textColor="#4B0082"/>
+                android:layout_marginLeft="10dp"
+                android:textColor="#4B0082"
+                android:textSize="22sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/display_owneremail"
@@ -128,9 +131,8 @@
                 android:id="@+id/display_owneremail_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:autoSizeMaxTextSize="24sp"
-                android:textColor="#4B0082"/>
+                android:textColor="#4B0082"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -152,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:autoSizeMaxTextSize="24sp"
-                android:textColor="#4B0082"/>
+                android:textColor="#4B0082" />
 
         </LinearLayout>
 
