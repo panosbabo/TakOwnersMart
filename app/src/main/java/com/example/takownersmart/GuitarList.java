@@ -17,16 +17,20 @@ public class GuitarList extends ArrayAdapter {
     private String[] guitarModel;
     private String[] guitarPrice;
     private Integer[] imageid;
+    private String[] guitarOwner;
+    private String[] ownerEmail;
     private Activity context;
 
     // Constructor for each row element
-    public GuitarList (Activity context, Integer[] imageid, String guitarBrand, String[] guitarModel, String[] guitarPrice) {
+    public GuitarList (Activity context, Integer[] imageid, String guitarBrand, String[] guitarModel, String[] guitarPrice, String[] guitarOwner, String[] ownerEmail) {
         super(context, R.layout.row_item, guitarModel);
         this.context = context;
         this.imageid = imageid;
         this.guitarBrand = guitarBrand;
         this.guitarModel = guitarModel;
         this.guitarPrice = guitarPrice;
+        this.guitarOwner = guitarOwner;
+        this.ownerEmail = ownerEmail;
 
 
     }
@@ -45,34 +49,20 @@ public class GuitarList extends ArrayAdapter {
         TextView txtguitarBrand = (TextView) row.findViewById(R.id.textViewGuitarBrand);
         TextView txtguitarModel = (TextView) row.findViewById(R.id.textViewGuitarModel);
         TextView txtguitarPrice = (TextView) row.findViewById(R.id.textViewGuitarPrice);
+        TextView txtguitarOwner = (TextView) row.findViewById(R.id.textViewGuitarOwner);
+//        TextView txtownerEmail = (TextView) row.findViewById(R.id.textViewOwnerEmail);
         ImageView id_imageGuitar = (ImageView) row.findViewById(R.id.imageViewGuitar);
 
         // Views displayed
         txtguitarBrand.setText(guitarBrand);
         txtguitarModel.setText(guitarModel[position]);
         txtguitarPrice.setText(guitarPrice[position]);
+        txtguitarOwner.setText(guitarOwner[position]);
+//        txtownerEmail.setText(ownerEmail[position]);
         id_imageGuitar.setImageResource(imageid[position]);
 
-        // Toast made when user clicks on Country label
-        txtguitarBrand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //You clicked on the Country label
-                Toast.makeText(context.getApplicationContext(), "You Selected on the Brand label of " + guitarBrand, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Toast made when user clicks on Capital label
-        txtguitarModel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //You clicked on the Capital label
-                Toast.makeText(context.getApplicationContext(), "You Selected on the Model of " + guitarModel[position], Toast.LENGTH_SHORT).show();
-            }
-        });
-
         // New Intent created when user clicks on Flag image
-        id_imageGuitar.setOnClickListener(new View.OnClickListener() {
+        row.setOnClickListener(new View.OnClickListener() {
 
             // This mechanism allows you to call open a new activity in your screen
             Intent intent = new Intent(GuitarList.super.getContext(), DisplayInfo.class);
@@ -87,6 +77,9 @@ public class GuitarList extends ArrayAdapter {
                 // Parsing data to the next activity with the use of Bundle
                 b.putString("brand", guitarBrand);
                 b.putString("model", guitarModel[position]);
+                b.putString("price", guitarPrice[position]);
+                b.putString("owner", guitarOwner[position]);
+                b.putString("ownemail", ownerEmail[position]);
 
 
                 intent.putExtras(b); //Put your id to your next Intent

@@ -32,6 +32,23 @@ public class search_guitars extends AppCompatActivity {
             "2,799€"
     };
 
+    private String guitarOwner[] = {
+            "Dimi",
+            "Panos",
+            "Vladimir",
+            "Donald",
+            "Michaelangelo",
+            "Thaleia"
+    };
+
+    private String ownerEmail[] = {
+            "dimi@usemail.com",
+            "panos@panoulis.com",
+            "vlad_russian_09-05@russia.com",
+            "donald_45@usa.com",
+            "mike_00fg@usemail.com",
+            "thaleita33@usemail.com"
+    };
     // Fetching flag images from drawable
     private Integer imageid[] = {
             R.drawable.p3dc,
@@ -57,7 +74,7 @@ public class search_guitars extends AppCompatActivity {
         listView.addHeaderView(textView);
 
         // For populating list data
-        GuitarList customGuitarList = new GuitarList(this, imageid, guitarBrand, guitarModels, guitarPrice);
+        GuitarList customGuitarList = new GuitarList(this, imageid, guitarBrand, guitarModels, guitarPrice, guitarOwner, ownerEmail);
         listView.setAdapter(customGuitarList);
     }
 }
