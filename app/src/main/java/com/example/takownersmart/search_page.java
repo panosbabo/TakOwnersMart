@@ -19,38 +19,6 @@ import android.widget.TextView;
  */
 public class search_page extends Fragment {
 
-//    private ListView listView;
-//
-//    // Private data for the Countries and capital names
-//    private String guitarBrand[] = {
-//            "Takamine",
-//            "Takamine",
-//            "Takamine",
-//            "Takamine",
-//            "Takamine",
-//            "Takamine",
-//    };
-//
-//    private String guitarModels[] = {
-//            "P3DC",
-//            "P4DC",
-//            "P5DC",
-//            "P7DC",
-//            "LTD2016",
-//            "LTD2020"
-//    };
-//
-//    // Fetching flag images from drawable
-//    private Integer imageid[] = {
-//            R.drawable.P3DC,
-//            R.drawable.P4DC,
-//            R.drawable.P5DC,
-//            R.drawable.P7DC,
-//            R.drawable.LTD2016,
-//            R.drawable.LTD2020,
-//
-//    };
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //    private static final String ARG_PARAM1 = "param1";
@@ -91,8 +59,6 @@ public class search_page extends Fragment {
 //        }
         Intent intent = new Intent(search_page.super.getContext(), search_guitars.class);
         startActivity(intent);
-
-
     }
 
     @Override
