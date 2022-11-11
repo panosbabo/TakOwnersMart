@@ -1,7 +1,6 @@
 package com.example.takownersmart;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,15 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link search_page#newInstance} factory method to
+ * Use the {@link SearchPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class search_page extends Fragment {
+public class SearchPage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +25,7 @@ public class search_page extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
 
-    public search_page() {
+    public SearchPage() {
         // Required empty public constructor
     }
 
@@ -41,8 +38,8 @@ public class search_page extends Fragment {
      * @return A new instance of fragment settings_page.
      */
     // TODO: Rename and change types and number of parameters
-    public static search_page newInstance(String param1, String param2) {
-        search_page fragment = new search_page();
+    public static SearchPage newInstance(String param1, String param2) {
+        SearchPage fragment = new SearchPage();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -57,7 +54,7 @@ public class search_page extends Fragment {
 //            mParam1 = getArguments().getString(ARG_PARAM1);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
 //        }
-        Intent intent = new Intent(search_page.super.getContext(), search_guitars.class);
+        Intent intent = new Intent(SearchPage.super.getContext(), SearchGuitars.class);
         startActivity(intent);
     }
 

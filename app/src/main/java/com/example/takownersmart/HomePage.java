@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link home_page#newInstance} factory method to
+ * Use the {@link HomePage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class home_page extends Fragment {
+public class HomePage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class home_page extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public home_page() {
+    public HomePage() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class home_page extends Fragment {
      * @return A new instance of fragment home_page.
      */
     // TODO: Rename and change types and number of parameters
-    public static home_page newInstance(String param1, String param2) {
-        home_page fragment = new home_page();
+    public static HomePage newInstance(String param1, String param2) {
+        HomePage fragment = new HomePage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

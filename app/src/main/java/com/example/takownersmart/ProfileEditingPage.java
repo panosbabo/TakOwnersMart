@@ -1,30 +1,22 @@
 package com.example.takownersmart;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link profile_editing#newInstance} factory method to
+ * Use the {@link ProfileEditingPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class profile_editing extends Fragment {
+public class ProfileEditingPage extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,7 +30,7 @@ public class profile_editing extends Fragment {
     private EditText et_message;
     private Button btn_send;
 
-    public profile_editing() {
+    public ProfileEditingPage() {
         // Required empty public constructor
     }
 
@@ -53,8 +45,8 @@ public class profile_editing extends Fragment {
      * @return A new instance of fragment settings_page.
      */
     // TODO: Rename and change types and number of parameters
-    public profile_editing newInstance(String param1, String param2) {
-        profile_editing fragment = new profile_editing();
+    public ProfileEditingPage newInstance(String param1, String param2) {
+        ProfileEditingPage fragment = new ProfileEditingPage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,11 +76,11 @@ public class profile_editing extends Fragment {
         btn_send.setOnClickListener((v) -> {
                 Bundle bundle = new Bundle();
                 bundle.putString("key", et_message.getText().toString());
-                profile_page fragment = new profile_page();
+                ProfilePage fragment = new ProfilePage();
                 fragment.setArguments(bundle);
                 getChildFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment);
                 FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.frame_layout, new profile_page());
+                fr.replace(R.id.frame_layout, new ProfilePage());
                 fr.commit();
         });
 

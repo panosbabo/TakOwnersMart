@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        // Inflating an activity main binding that will allow the use of a bottom nav bar
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -34,19 +35,22 @@ public class MainActivity extends AppCompatActivity {
 //        fragmentTransaction.add(R.id.frame_layout, new profile_editing());
 //        fragmentTransaction.commit();
 
-        changeScreen(new home_page());
+        // Setting home pagefragment as the main page after the main activity is initialized
+        changeScreen(new HomePage());
 
+        // Listener for the bottom nav bar items
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
+            // Switch statement that changes fragment whichever item the user has clicked on
             switch (item.getItemId()) {
                 case R.id.home:
-                    changeScreen(new home_page());
+                    changeScreen(new HomePage());
                     break;
                 case R.id.profile:
-                    changeScreen(new profile_page());
+                    changeScreen(new ProfilePage());
                     break;
                 case R.id.search:
-                    changeScreen(new search_page());
+                    changeScreen(new SearchPage());
                     break;
             }
             return true;
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Function that allows to change between fragments.
     private void changeScreen(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 /*
+Fish signature
       /`·.¸
      /¸...¸`:·
  ¸.·´  ¸   `·.¸.·´)

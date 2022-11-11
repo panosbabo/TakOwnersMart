@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+// Activity that displays more detailed info whenever the user clicks on each guitar item
 public class DisplayInfo extends AppCompatActivity {
 
     @Override
@@ -40,23 +40,24 @@ public class DisplayInfo extends AppCompatActivity {
         display_owneremail.setText(ownemail);
 
 
-        // Button initialization
+        // Button initialization for more detailed information
         Button button_info = ((Button) findViewById(R.id.button_info));
 
-        // Button function implemented when the user clicks on
+        // Button function implemented to search on the web when the user clicks on more details information
         button_info.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+                // String query that catches the specific guitar model data
                 String query = brand + "+" + model;
 
-//                String escapedQuery;
-//                escapedQuery = URLEncoder.encode(query, "UTF-8");
-
+                // Parsing guitar data to a uri for web search
                 Uri uri = Uri.parse("http://www.google.com/search?q=" + query);
 
+                // New intent created
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 
+                // Start of the next activity
                 startActivity(intent);
             }
 

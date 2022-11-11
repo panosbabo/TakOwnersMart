@@ -11,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// Guitar List Class extends ArrayAdapter to be used as fetch and display on the specific activity.
 public class GuitarList extends ArrayAdapter {
 
+    // All important private variables for each guitar owner
     private String guitarBrand;
     private String[] guitarModel;
     private String[] guitarPrice;
@@ -31,8 +33,6 @@ public class GuitarList extends ArrayAdapter {
         this.guitarPrice = guitarPrice;
         this.guitarOwner = guitarOwner;
         this.ownerEmail = ownerEmail;
-
-
     }
 
     // Receiving the view in a row pattern
@@ -46,11 +46,11 @@ public class GuitarList extends ArrayAdapter {
         // Views initiated
         if (convertView == null)
             row = inflater.inflate(R.layout.row_item, null, true);
+
         TextView txtguitarBrand = (TextView) row.findViewById(R.id.textViewGuitarBrand);
         TextView txtguitarModel = (TextView) row.findViewById(R.id.textViewGuitarModel);
         TextView txtguitarPrice = (TextView) row.findViewById(R.id.textViewGuitarPrice);
         TextView txtguitarOwner = (TextView) row.findViewById(R.id.textViewGuitarOwner);
-//        TextView txtownerEmail = (TextView) row.findViewById(R.id.textViewOwnerEmail);
         ImageView id_imageGuitar = (ImageView) row.findViewById(R.id.imageViewGuitar);
 
         // Views displayed
@@ -58,10 +58,9 @@ public class GuitarList extends ArrayAdapter {
         txtguitarModel.setText(guitarModel[position]);
         txtguitarPrice.setText(guitarPrice[position]);
         txtguitarOwner.setText(guitarOwner[position]);
-//        txtownerEmail.setText(ownerEmail[position]);
         id_imageGuitar.setImageResource(imageid[position]);
 
-        // New Intent created when user clicks on Flag image
+        // New Intent created when user clicks on each guitar owner item
         row.setOnClickListener(new View.OnClickListener() {
 
             // This mechanism allows you to call open a new activity in your screen
