@@ -1,5 +1,24 @@
 package com.example.takownersmart;
 
+
+
+
+import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.takownersmart.Profile;
+
+import java.util.List;
+
+
+
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +33,11 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.viewmodel.CreationExtras;
+import androidx.room.Ignore;
+import androidx.room.Room;
 
 public class ProfilePage extends Fragment {
 
@@ -31,11 +54,37 @@ public class ProfilePage extends Fragment {
     private TextView txt_result;
     private Button btn_get_result;
 
-    TextView usernametxt;
+    private TextView mUsernameText;
+    private TextView mEmailText;
+    private TextView mAddressText;
+    private TextView mGuitarText;
+    private TextView mavatarusernameText;
+    private TextView mavataremailText;
+
+    private String usrnm;
+    private String eml;
+    private String adrs;
+    private String gtr;
+
+//    private String zusrnm;
+//    private String zeml;
+//    private String zadrs;
+//    private String zgtr;
+
+
+    private Profile profileDets;
+    private ProfileDao profdao;
 
     public ProfilePage(){
         // require a empty public constructor
     }
+
+//    public ProfilePage(String usrnm, String eml, String adrs, String gtr) {
+//        this.usrnm = usrnm;
+//        this.eml = eml;
+//        this.adrs = adrs;
+//        this.gtr = gtr;
+//    }
 
     // TODO: Rename and change types and number of parameters
     public ProfilePage newInstance(String param1, String param2) {
@@ -47,26 +96,6 @@ public class ProfilePage extends Fragment {
         return fragment;
     }
 
-    ActivityResultLauncher<Intent> activityLauncher =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                    new ActivityResultCallback<ActivityResult>() {
-                        @Override
-                        public void onActivityResult(ActivityResult result) {
-                            Log.d(TAG,"OnActivityResult");
-                            if(result.getResultCode() == 78){
-                                Intent intent = result.getData();
-                                if(intent != null){
-                                    // Extract data here
-                                    String data = intent.getStringExtra("result");
-                                    txt_result.setText(data);
-                                }
-                            }
-                            else{
-                                txt_result.setText("Something terrible happened!");
-                            }
-                        }
-                    }
-            );
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +103,7 @@ public class ProfilePage extends Fragment {
 
     }
 
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -82,6 +112,71 @@ public class ProfilePage extends Fragment {
         // User image is initialized
         ImageView userView = (ImageView) profView.findViewById(R.id.userimage);
         userView.setImageResource(R.drawable.small_icon);
+
+//        Log.d("Profile ! Username", getArguments().getString("username"));
+//        Log.d("Profile ! Email", getArguments().getString("email"));
+//        Log.d("Profile ! Address", getArguments().getString("address"));
+//        Log.d("Profile ! Guitar", getArguments().getString("guitar"));
+
+//        if((getArguments().getString("username") == null) || (getArguments().getString("email") == null) ||
+//                (getArguments().getString("address") == null) || (getArguments().getString("guitar") == null)) {
+//            usrnm = "Empty";
+//            eml = "Empty";
+//            adrs = "Empty";
+//            gtr = "Empty";
+//        }
+//        else {
+//            usrnm = getArguments().getString("username");
+//            eml = getArguments().getString("email");
+//            adrs = getArguments().getString("address");
+//            gtr = getArguments().getString("guitar");
+//        }
+
+//        usrnm = getArguments().getString("username");
+//        eml = getArguments().getString("email");
+//        adrs = getArguments().getString("address");
+//        gtr = getArguments().getString("guitar");
+
+//        zusrnm = getArguments().getString("username");
+//        zeml = getArguments().getString("email");
+//        zadrs = getArguments().getString("address");
+//        zgtr = getArguments().getString("guitar");
+
+//        ProfilePage newprof = new ProfilePage(zusrnm, zeml, zadrs, zgtr);
+
+        mUsernameText = profView.findViewById(R.id.usernameinsert);
+        mEmailText = profView.findViewById(R.id.emailinsert);
+        mAddressText = profView.findViewById(R.id.addressinsert);
+        mGuitarText = profView.findViewById(R.id.guitarinsert);
+        mavatarusernameText = profView.findViewById(R.id.username);
+        mavataremailText = profView.findViewById(R.id.emailuser);
+
+        if(usrnm == null) {
+            usrnm = "Empty";
+            eml = "Empty";
+            adrs = "Empty";
+            gtr = "Empty";
+
+//            mUsernameText.setText("Empty");
+//            mEmailText.setText("Empty");
+//            mAddressText.setText("Empty");
+//            mGuitarText.setText("Empty");
+//            mavatarusernameText.setText("Empty");
+//            mavataremailText.setText("Empty");
+        }
+        else {
+//            usrnm = getArguments().getString("username");
+//            eml = getArguments().getString("email");
+//            adrs = getArguments().getString("address");
+//            gtr = getArguments().getString("guitar");
+        }
+        mUsernameText.setText(usrnm);
+        mEmailText.setText(eml);
+        mAddressText.setText(adrs);
+        mGuitarText.setText(gtr);
+        mavatarusernameText.setText(usrnm);
+        mavataremailText.setText(eml);
+
 
         Button btn = (Button)profView.findViewById(R.id.editprofile_btn);
 
@@ -99,7 +194,7 @@ public class ProfilePage extends Fragment {
 
         txt_result = profView.findViewById(R.id.usernameinsert);
 
-
         return profView;
     }
+
 }

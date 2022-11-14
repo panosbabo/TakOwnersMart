@@ -57,7 +57,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Panos"
                         android:textColor="#ffffff"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -70,7 +69,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Empty"
                         android:textColor="#ffffff"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -126,13 +124,12 @@
                                 android:id="@+id/usernameinsert"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Empty"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp"
-                                android:textAlignment="viewEnd"
+                                android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"/>
+                                android:layout_weight="1"
+                                android:textAlignment="viewEnd"
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp" />
 
                         </LinearLayout>
 
@@ -167,7 +164,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Empty"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp"
                                 android:textAlignment="viewEnd"
@@ -182,45 +178,7 @@
                             android:layout_height="1dp"
                             android:layout_margin="10dp"
                             android:background="#D9D9D9" />
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_margin="10dp">
 
-                            <TextView
-                                android:id="@+id/guitartext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Guitar:"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
-                                android:textColor="#182693"
-                                android:textAlignment="viewStart"
-                                android:layout_marginTop="10dp"/>
-
-                            <TextView
-                                android:id="@+id/guitarinsert"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Empty"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp"
-                                android:textAlignment="viewEnd"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"/>
-
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/line3"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_margin="10dp"
-                            android:background="#D9D9D9" />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -247,7 +205,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:autoSizeTextType="uniform"
-                                android:text="Empty"
                                 android:textColor="#5B5B5B"
                                 android:textSize="16sp"
                                 android:textAlignment="viewEnd"
@@ -259,6 +216,45 @@
 
                         <View
                             android:id="@+id/line4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="10dp"
+                            android:background="#D9D9D9" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+
+                            <TextView
+                                android:id="@+id/guitartext"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Guitar:"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="18sp"
+                                android:textColor="#182693"
+                                android:textAlignment="viewStart"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:id="@+id/guitarinsert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp"
+                                android:textAlignment="viewEnd"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:id="@+id/line3"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_margin="10dp"
