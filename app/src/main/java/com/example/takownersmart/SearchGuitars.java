@@ -50,6 +50,7 @@ public class SearchGuitars extends AppCompatActivity {
         // Fetching data of allegedly guitar owners from a csv file.
         readDisplayInfo();
 
+        // Initializing GuitarList attributes to the amount of owners in the csv file.
         guitarModels = new String[guitarExampleList.size()];
         guitarPrice = new String[guitarExampleList.size()];
         guitarOwner = new String[guitarExampleList.size()];
