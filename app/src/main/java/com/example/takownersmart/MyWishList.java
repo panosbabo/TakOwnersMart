@@ -48,7 +48,7 @@ public class MyWishList extends AppCompatActivity {
             emptyView.setVisibility(View.VISIBLE);
         }
         else {
-            // Creating a descent textview for the search page title
+            // Creating a descent textview for the wish list page title
             TextView titleview = new TextView(this);
             titleview = findViewById(R.id.wishlist_titleview);
             titleview.setTypeface(Typeface.DEFAULT_BOLD);
