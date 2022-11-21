@@ -21,7 +21,7 @@ public interface ProfileDao {
     public void delete(Profile profile);
 
     @Query("SELECT * FROM profile")
-    public List<Profile> getContacts();
+    public List<Profile> getmyProfile();
 
     @Query("SELECT * FROM profile WHERE personUsername = :username")
     public Profile getprofileWithId(String username);

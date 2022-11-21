@@ -59,6 +59,8 @@ public class SearchGuitars extends AppCompatActivity {
         // Data is being transferred to newly created GuitarList instance.
         transferData();
 
+        // Reference: Done a Similar example in Lab 4
+
         // Creating a descent textview for the search page title
         TextView textView = new TextView(this);
         textView.setTypeface(Typeface.DEFAULT_BOLD);
@@ -71,6 +73,7 @@ public class SearchGuitars extends AppCompatActivity {
         // For populating list data
         GuitarList customGuitarList = new GuitarList(this, imageid, guitarBrand, guitarModels, guitarPrice, guitarOwner, ownerEmail);
         listView.setAdapter(customGuitarList);
+        // Reference Complete
     }
 
     // Function that reads and fetches all relevant data of guitar owners from a csv file

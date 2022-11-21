@@ -2,9 +2,11 @@ package com.example.takownersmart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +14,9 @@ import android.widget.Toast;
 
 // Activity that displays more detailed info whenever the user clicks on each guitar item
 public class DisplayInfo extends AppCompatActivity {
+
+    // Creating private variable for activity context
+    private Activity context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +74,34 @@ public class DisplayInfo extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                //TODO: Add a function that inserts item to the wishlist
-                // Function here
+                //Calling method to insert an item to wishlist database
+                saveItemList(brand, model, price, owner, ownemail);
 
                 // Message displayed when user adds an item to the wishlist
                 Toast.makeText(getApplicationContext(), brand + " " + model + " added to My WishList", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Function that inserts the item to the database
+    private void saveItemList(String guitarBrand, String guitarModel, String guitarPrice, String guitarOwner, String ownerEmail) {
+        // Calling Database
+        WishListDatabase db = WishListDatabase.getDbInstance(this.getApplicationContext());
+
+        // Creating a new instance of the object
+        Guitar guitar = new Guitar();
+
+        // Passing selected item details to the database attributes
+        guitar.guitarBrand = guitarBrand;
+        guitar.guitarModel = guitarModel;
+        guitar.guitarPrice = guitarPrice;
+        guitar.guitarOwner = guitarOwner;
+        guitar.ownerEmail = ownerEmail;
+
+        // Calling Database Access Object command for insert
+        db.wishDao().insertGuitar(guitar);
+
+        // Returning to previous activity
+        finish();
     }
 }

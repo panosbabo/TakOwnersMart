@@ -1,11 +1,18 @@
 package com.example.takownersmart;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -13,30 +20,64 @@ public class MyWishList extends AppCompatActivity {
 
     // Variables for a recycler view.
     private RecyclerView wishListView;
+    private TextView emptyView;
+    private WishListAdapter wishListAdapter;
+    private List<Guitar> guitarListItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_wish_list);
 
-        wishListView = findViewById(R.id.idWishList);
-        wishListView.setLayoutManager(new LinearLayoutManager(this));
-        wishListView.setHasFixedSize(true);
+        // Initializing Views to the related R.id's
+        wishListView = (RecyclerView) findViewById(R.id.idWishList);
+        emptyView = (TextView) findViewById(R.id.empty_wishlist);
 
-//        //initializing adapter for recycler view.
-//        final PersonRVAdapter adapter = new PersonRVAdapter();
-//        //setting adapter class for recycler view.
-//        personsRV.setAdapter(adapter);
-//        //passing a data from view modal.
-//        viewmodal = ViewModelProviders.of(this).get(ViewModal.class);
-//        //below line is use to get all the courses from view modal.
-//        viewmodal.getAllPersons().observe(this, new Observer<List<PersonModal>>() {
-//            @Override
-//            public void onChanged(List<PersonModal> models) {
-//                //when the data is changed in our models we are adding that list to our adapter class.
-//                adapter.submitList(models);
-//            }
-//        });
+        // Initializing Recycler View for the WishList
+        initRecyclerView();
 
+        // Loading all items in the WishList
+        loadWishList();
+
+        // If-Else statement to check whether the WishList is empty or not
+        // and display the related content in each case.
+        if (guitarListItems.isEmpty()) {
+            wishListView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else {
+            wishListView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
     }
+
+    // Reference: This part of the following code is from an online Android example https://github.com/ravizworldz/AndroidRoomDB_Java
+    // Function that initializes an adapter for the recycler view
+    private void initRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.idWishList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+        wishListAdapter = new WishListAdapter(this);
+        recyclerView.setAdapter(wishListAdapter);
+    }
+
+    // Function that allows to load all items from the wishlist
+    private void loadWishList() {
+        WishListDatabase db = WishListDatabase.getDbInstance(this.getApplicationContext());
+        guitarListItems = db.wishDao().getAllGuitars();
+        wishListAdapter.setGuitarList(guitarListItems);
+    }
+
+    // Ordinary on ActivityResult
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 100) {
+            loadWishList();
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+    // Reference Complete
 }

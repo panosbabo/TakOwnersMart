@@ -5,7 +5,7 @@ package com.example.takownersmart;
 public class GuitarObject {
 
     // All important private variables for Guitar Object
-    private int id;
+    private int uid;
     private String guitarModel;
     private String guitarPrice;
     private String guitarOwner;
@@ -53,10 +53,10 @@ public class GuitarObject {
     }
 
     public int getId() {
-        return id;
+        return uid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int uid) {
+        this.uid = uid;
     }
 }
