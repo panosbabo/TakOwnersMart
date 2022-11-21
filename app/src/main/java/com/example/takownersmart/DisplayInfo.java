@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // Activity that displays more detailed info whenever the user clicks on each guitar item
 public class DisplayInfo extends AppCompatActivity {
@@ -40,8 +41,9 @@ public class DisplayInfo extends AppCompatActivity {
         display_owneremail.setText(ownemail);
 
 
-        // Button initialization for more detailed information
+        // Button initialization for more detailed information & add to wishlist button
         Button button_info = ((Button) findViewById(R.id.button_info));
+        Button wish_add = ((Button) findViewById(R.id.addTo_wishlist));
 
         // Button function implemented to search on the web when the user clicks on more details information
         button_info.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +62,19 @@ public class DisplayInfo extends AppCompatActivity {
                 // Start of the next activity
                 startActivity(intent);
             }
+        });
 
+        // Button function implemented to search on the web when the user clicks on more details information
+        wish_add.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                //TODO: Add a function that inserts item to the wishlist
+                // Function here
+
+                // Message displayed when user adds an item to the wishlist
+                Toast.makeText(getApplicationContext(), brand + " " + model + " added to My WishList", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
