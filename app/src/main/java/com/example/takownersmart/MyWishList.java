@@ -4,11 +4,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +48,11 @@ public class MyWishList extends AppCompatActivity {
             emptyView.setVisibility(View.VISIBLE);
         }
         else {
+            // Creating a descent textview for the search page title
+            TextView titleview = new TextView(this);
+            titleview = findViewById(R.id.wishlist_titleview);
+            titleview.setTypeface(Typeface.DEFAULT_BOLD);
+
             wishListView.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
         }
@@ -55,10 +62,14 @@ public class MyWishList extends AppCompatActivity {
     // Function that initializes an adapter for the recycler view
     private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.idWishList);
+        // Setting layout to Linear
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Adding a divider line as decoration item
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+        // Setting the adapter to WishListAdapter
         wishListAdapter = new WishListAdapter(this);
         recyclerView.setAdapter(wishListAdapter);
     }
@@ -70,7 +81,7 @@ public class MyWishList extends AppCompatActivity {
         wishListAdapter.setGuitarList(guitarListItems);
     }
 
-    // Ordinary on ActivityResult
+    // Ordinary onActivityResult
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 100) {
