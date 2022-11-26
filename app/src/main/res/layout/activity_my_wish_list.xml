@@ -10,7 +10,7 @@
         android:id="@+id/wishlist_titleview"
         android:layout_width="89dp"
         android:layout_height="22dp"
-        android:text="My Wish List"
+        android:text="My WishList"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/empty_wishlist"
         app:layout_constraintEnd_toEndOf="parent"

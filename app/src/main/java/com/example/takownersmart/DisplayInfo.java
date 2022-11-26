@@ -19,6 +19,8 @@ public class DisplayInfo extends AppCompatActivity {
 
     // Creating private variable for activity context
     private Activity context;
+    private String brand = "";
+    private String model = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,8 @@ public class DisplayInfo extends AppCompatActivity {
 
         // Read the variables from the bundle
         Bundle b = getIntent().getExtras();
-        String brand = b.getString("brand");
-        String model = b.getString("model");
+        brand = b.getString("brand");
+        model = b.getString("model");
         String price = b.getString("price");
         String owner = b.getString("owner");
         String ownemail = b.getString("ownemail");
@@ -81,9 +83,6 @@ public class DisplayInfo extends AppCompatActivity {
             public void onClick(View view) {
                 //Calling method to insert an item to wishlist database
                 saveItemList(brand, model, price, owner, ownemail);
-
-                // Message displayed when user adds an item to the wishlist
-                Toast.makeText(getApplicationContext(), brand + " " + model + " added to My WishList", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -103,9 +102,18 @@ public class DisplayInfo extends AppCompatActivity {
         guitar.guitarOwner = guitarOwner;
         guitar.ownerEmail = ownerEmail;
 
-        // Calling Database Access Object command for insert
-        db.wishDao().insertGuitar(guitar);
+        // If statement that checks if an item already exists in the database
+        if(db.wishDao().getAllGuitars().contains(model)) {
+            // Message displayed if an item already exists in the wishlist
+            Toast.makeText(getApplicationContext(), guitar.guitarBrand + " " + guitar.guitarModel + " is already in My WishList", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            // Message displayed when user adds an item to the wishlist
+            Toast.makeText(getApplicationContext(), guitar.guitarBrand + " " + guitar.guitarModel + " added to My WishList", Toast.LENGTH_SHORT).show();
 
+            // Calling Database Access Object command for insert
+            db.wishDao().insertGuitar(guitar);
+        }
         // Returning to previous activity
         finish();
     }

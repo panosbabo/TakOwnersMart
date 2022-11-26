@@ -56,8 +56,6 @@ public class MyWishList extends AppCompatActivity {
             wishListView.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
         }
-
-
     }
 
     // Reference: This part of the following code is from an online Android example https://github.com/ravizworldz/AndroidRoomDB_Java

@@ -1,6 +1,5 @@
 package com.example.takownersmart;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,22 +8,23 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
-// Reference: Some parts of the following code is from an online Android example https://github.com/ravizworldz/AndroidRoomDB_Java
-public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyViewHolder> {
+public class WishListAdapter extends RecyclerView.Adapter<WishLT> {
 
-    // Private Variables for the Wish List Adapter
+    List<Guitar> guitarListItems;
     private Context context;
-    private List<Guitar> guitarListItems;
-    private Button removeItem;
+
+        public WishListAdapter(Context context) {
+        this.context = context;
+    }
+
+        public void setGuitarList(List<Guitar> guitarListItems) {
+        this.guitarListItems = guitarListItems;
+        notifyDataSetChanged();
+    }
 
     // Fetching guitar images from drawable
     private Integer imageid[] = {
@@ -36,52 +36,18 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
             R.drawable.ltd2020,
     };
 
-    public WishListAdapter(Context context) {
-        this.context = context;
-    }
-
-    public void setGuitarList(List<Guitar> guitarListItems) {
-        this.guitarListItems = guitarListItems;
-        notifyDataSetChanged();
-    }
-
     // Adapter Initialized for the inflation of the wishlist items
     @NonNull
     @Override
-    public WishListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.wish_item, parent, false);
+    public WishLT onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wish_item, parent, false);
 
-        // Creating an instance for the Remove item button
-        removeItem = view.findViewById(R.id.remove_item_btn);
-
-        // Function for the Remove Item button to remove each individual item from the list
-        removeItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Calling function to run Dao command on DELETE
-                removeItemList(viewType);
-                // Message displayed when user adds an item to the wishlist
-                Toast.makeText(v.getContext(), "Your item has been removed.", Toast.LENGTH_SHORT).show();
-                // Returning to previous activity as a refresh
-                ((Activity)context).finish();
-            }
-        });
-        return new MyViewHolder(view);
+        return new WishLT(view).linkAdapter(this);
     }
 
-    // Function to run Dao DELETE command for the specific item selected from the wishlist
-    public void removeItemList(int position) {
-        // Calling Database
-        WishListDatabase db = WishListDatabase.getDbInstance(this.context);
-
-        // Calling Database Access Object command for delete
-        db.wishDao().delete(guitarListItems.get(position));
-    }
-
-    // A View holder for the adapter
+    // A view holder for the adapter
     @Override
-    public void onBindViewHolder(@NonNull WishListAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull WishLT holder, int position) {
         // Holder to display the item's details on screen
         holder.tvguitarBrand.setText(this.guitarListItems.get(position).guitarBrand);
         holder.tvguitarModel.setText(this.guitarListItems.get(position).guitarModel);
@@ -114,26 +80,62 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
     // getItemCount to retrieve the size of guitarListItems
     @Override
     public int getItemCount() {
-        return  this.guitarListItems.size();
+        return guitarListItems.size();
+    }
+}
+
+// Recycler Viewer for the wish list
+class WishLT extends RecyclerView.ViewHolder{
+
+    // Variables to be used for the adapter
+    TextView tvguitarBrand;
+    TextView tvguitarModel;
+    TextView tvguitarPrice;
+    TextView tvguitarOwner;
+    ImageView guitarImage;
+    private WishListAdapter adapter;
+    private Context context;
+
+    // Holder for the Texts and Image Views and Remove Button
+    public WishLT (@NonNull View itemView) {
+        super(itemView);
+
+        // Views initialized to related Resource id's.
+        tvguitarBrand = itemView.findViewById(R.id.textViewGuitarBrand);
+        tvguitarModel = itemView.findViewById(R.id.textViewGuitarModel);
+        tvguitarPrice = itemView.findViewById(R.id.textViewGuitarPrice);
+        tvguitarOwner = itemView.findViewById(R.id.textViewGuitarOwner);
+        guitarImage = itemView.findViewById(R.id.imageViewGuitar);
+
+        // Creating an instance for the Remove item button
+        Button removeItem = itemView.findViewById(R.id.remove_item_btn);
+
+        // Function for the Remove Item button to remove each individual item from the list
+        removeItem.setOnClickListener(v -> {
+            // Calling function to run Dao command on DELETE
+            removeItemList(getAdapterPosition());
+            // Also removed from the adapter list
+            adapter.guitarListItems.remove(getAdapterPosition());
+            adapter.notifyItemRemoved(getAdapterPosition());
+
+            // Message displayed when user adds an item to the wishlist
+//            Toast.makeText(v.getContext(), adapter.guitarListItems.get(getItemViewType()).guitarModel + " has been removed from My wishlist", Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), "Your item has been removed", Toast.LENGTH_SHORT).show();
+        });
     }
 
-    // Recycler Viewer for the wish list
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvguitarBrand;
-        TextView tvguitarModel;
-        TextView tvguitarPrice;
-        TextView tvguitarOwner;
-        ImageView guitarImage;
+    // Function to run Dao DELETE command for the specific item selected from the wishlist
+    public void removeItemList(int position) {
+        // Calling Database
+        WishListDatabase db = WishListDatabase.getDbInstance(this.context);
 
+        // Calling Database Access Object command for delete
+        db.wishDao().delete(adapter.guitarListItems.get(position));
+    }
 
-        // Holder for the Texts and Image Views
-        public MyViewHolder(View view) {
-            super(view);
-            tvguitarBrand = view.findViewById(R.id.textViewGuitarBrand);
-            tvguitarModel = view.findViewById(R.id.textViewGuitarModel);
-            tvguitarPrice = view.findViewById(R.id.textViewGuitarPrice);
-            tvguitarOwner = view.findViewById(R.id.textViewGuitarOwner);
-            guitarImage = view.findViewById(R.id.imageViewGuitar);
-        }
+    // Adapter initialization
+    public WishLT linkAdapter(WishListAdapter adapter){
+        this.adapter = adapter;
+        return this;
     }
 }
