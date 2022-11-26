@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.Objects;
 
 // Activity that displays more detailed info whenever the user clicks on each guitar item
 public class DisplayInfo extends AppCompatActivity {
@@ -102,19 +106,37 @@ public class DisplayInfo extends AppCompatActivity {
         guitar.guitarOwner = guitarOwner;
         guitar.ownerEmail = ownerEmail;
 
-        // If statement that checks if an item already exists in the database
-        if(db.wishDao().getAllGuitars().contains(model)) {
-            // Message displayed if an item already exists in the wishlist
-            Toast.makeText(getApplicationContext(), guitar.guitarBrand + " " + guitar.guitarModel + " is already in My WishList", Toast.LENGTH_SHORT).show();
+        // For loop that goes through database to check if a guitar is already in the wishlist
+        for (int i = 0; i < db.wishDao().getAllGuitars().size(); i++) {
+            // If statement that checks if an item already exists in the database
+            if (db.wishDao().getAllGuitars().get(i).guitarModel.equals(guitar.guitarModel)){
+                // Message displayed if an item already exists in the wishlist
+                Toast.makeText(getApplicationContext(), "This item is already in the WishList", Toast.LENGTH_SHORT).show();
+                break;
+            }
         }
-        else {
+
+        // Check boolean variable
+        boolean check = false;
+
+        // For loop that checks if the guitar is already in the list
+        for (int i = 0; i < db.wishDao().getAllGuitars().size(); i++) {
+            // If statement that checks whether it is the list or not
+            if (db.wishDao().getAllGuitars().get(i).guitarModel.equals(guitar.guitarModel)) {
+                check = true;
+                break;
+            }
+        }
+
+        // If statement that checks if boolean is false, so it can proceed with INSERT command from DAO
+        if(!check) {
             // Message displayed when user adds an item to the wishlist
             Toast.makeText(getApplicationContext(), guitar.guitarBrand + " " + guitar.guitarModel + " added to My WishList", Toast.LENGTH_SHORT).show();
 
             // Calling Database Access Object command for insert
             db.wishDao().insertGuitar(guitar);
+            // Returning to previous activity
+            finish();
         }
-        // Returning to previous activity
-        finish();
     }
 }
