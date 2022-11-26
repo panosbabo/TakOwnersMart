@@ -28,6 +28,7 @@ public class SearchGuitars extends AppCompatActivity {
     private String[] guitarPrice;
     private String[] guitarOwner;
     private String[] ownerEmail;
+    private String[] guitarDetails;
 
     // Private string for the intended amazing Japanese Acoustic Guitar Brand named "Takamine"
     private String guitarBrand = "Takamine";
@@ -55,6 +56,7 @@ public class SearchGuitars extends AppCompatActivity {
         guitarPrice = new String[guitarExampleList.size()];
         guitarOwner = new String[guitarExampleList.size()];
         ownerEmail = new String[guitarExampleList.size()];
+        guitarDetails = new String[guitarExampleList.size()];
 
         // Data is being transferred to newly created GuitarList instance.
         transferData();
@@ -71,7 +73,7 @@ public class SearchGuitars extends AppCompatActivity {
         listView.addHeaderView(textView);
 
         // For populating list data
-        GuitarList customGuitarList = new GuitarList(this, imageid, guitarBrand, guitarModels, guitarPrice, guitarOwner, ownerEmail);
+        GuitarList customGuitarList = new GuitarList(this, imageid, guitarBrand, guitarModels, guitarPrice, guitarOwner, ownerEmail, guitarDetails);
         listView.setAdapter(customGuitarList);
         // Reference Complete
     }
@@ -92,7 +94,8 @@ public class SearchGuitars extends AppCompatActivity {
                         tokens[0],
                         tokens[1],
                         tokens[2],
-                        tokens[3]
+                        tokens[3],
+                        tokens[4]
                 );
                 guitarExampleList.add(guitar_list);
             }
@@ -110,6 +113,7 @@ public class SearchGuitars extends AppCompatActivity {
             guitarPrice[i] = guitarExampleList.get(i).getGuitarPrice();
             guitarOwner[i] = guitarExampleList.get(i).getGuitarOwner();
             ownerEmail[i] = guitarExampleList.get(i).getOwnerEmail();
+            guitarDetails[i] = guitarExampleList.get(i).getGuitarDetails();
         }
     }
 }

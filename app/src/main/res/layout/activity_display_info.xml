@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DisplayInfo">
 
-    <Button
-        android:id="@+id/button_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detailed information"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.245" />
-
-    <Button
-        android:id="@+id/addTo_wishlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add item to My WishList"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.451" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -149,9 +126,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/display_guitarDetails"
@@ -165,12 +142,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:autoSizeMaxTextSize="24sp"
+                android:autoSizeMaxTextSize="20sp"
                 android:textColor="#4B0082" />
 
         </LinearLayout>
 
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detailed information"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <Button
+        android:id="@+id/addTo_wishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add item to My WishList"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.553" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

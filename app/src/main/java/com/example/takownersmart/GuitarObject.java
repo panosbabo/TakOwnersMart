@@ -10,16 +10,22 @@ public class GuitarObject {
     private String guitarPrice;
     private String guitarOwner;
     private String ownerEmail;
+    private String guitarDetails;
 
     // Constructor for the guitar object
-    public GuitarObject(String guitarModel, String guitarPrice, String guitarOwner, String ownerEmail) {
+    public GuitarObject(String guitarModel, String guitarPrice, String guitarOwner, String ownerEmail, String guitarDetails) {
         this.guitarModel = guitarModel;
         this.guitarPrice = guitarPrice;
         this.guitarOwner = guitarOwner;
         this.ownerEmail = ownerEmail;
+        this.guitarDetails = guitarDetails;
     }
 
     //Setters and Getters of the Guitar Object
+    public String getGuitarDetails() { return guitarDetails; }
+
+    public void setGuitarDetails(String guitarDetails) { this.guitarDetails = guitarDetails; }
+
     public String getGuitarModel() {
         return guitarModel;
     }

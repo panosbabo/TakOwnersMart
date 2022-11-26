@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 // Activity that displays more detailed info whenever the user clicks on each guitar item
 public class DisplayInfo extends AppCompatActivity {
 
@@ -30,6 +32,7 @@ public class DisplayInfo extends AppCompatActivity {
         String price = b.getString("price");
         String owner = b.getString("owner");
         String ownemail = b.getString("ownemail");
+        String guitardet = b.getString("guitardets");
 
         // Link our widget to the variables
         TextView display_brand = (TextView) findViewById(R.id.display_brand_view);
@@ -37,6 +40,7 @@ public class DisplayInfo extends AppCompatActivity {
         TextView display_price = (TextView) findViewById(R.id.display_price_view);
         TextView display_owner = (TextView) findViewById(R.id.display_owner_view);
         TextView display_owneremail = (TextView) findViewById(R.id.display_owneremail_view);
+        TextView display_guitardetails = (TextView) findViewById(R.id.display_display_guitarDetails_view);
 
         // Display the values on the screen
         display_model.setText(model);
@@ -44,6 +48,7 @@ public class DisplayInfo extends AppCompatActivity {
         display_price.setText(price);
         display_owner.setText(owner);
         display_owneremail.setText(ownemail);
+        display_guitardetails.setText(guitardet);
 
 
         // Button initialization for more detailed information & add to wishlist button

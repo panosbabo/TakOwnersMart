@@ -21,10 +21,11 @@ public class GuitarList extends ArrayAdapter {
     private Integer[] imageid;
     private String[] guitarOwner;
     private String[] ownerEmail;
+    private String[] guitardetail;
     private Activity context;
 
     // Constructor for each row element
-    public GuitarList (Activity context, Integer[] imageid, String guitarBrand, String[] guitarModel, String[] guitarPrice, String[] guitarOwner, String[] ownerEmail) {
+    public GuitarList (Activity context, Integer[] imageid, String guitarBrand, String[] guitarModel, String[] guitarPrice, String[] guitarOwner, String[] ownerEmail, String[] guitardetail) {
         super(context, R.layout.row_item, guitarModel);
         this.context = context;
         this.imageid = imageid;
@@ -33,6 +34,7 @@ public class GuitarList extends ArrayAdapter {
         this.guitarPrice = guitarPrice;
         this.guitarOwner = guitarOwner;
         this.ownerEmail = ownerEmail;
+        this.guitardetail = guitardetail;
     }
 
     // Receiving the view in a row pattern
@@ -79,6 +81,7 @@ public class GuitarList extends ArrayAdapter {
                 b.putString("price", guitarPrice[position]);
                 b.putString("owner", guitarOwner[position]);
                 b.putString("ownemail", ownerEmail[position]);
+                b.putString("guitardets", guitardetail[position]);
 
 
                 intent.putExtras(b); //Put your id to your next Intent
