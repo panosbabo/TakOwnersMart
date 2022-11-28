@@ -3,7 +3,6 @@ package com.example.takownersmart;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 // This is a class created for only the use of a splash logo while the app is started

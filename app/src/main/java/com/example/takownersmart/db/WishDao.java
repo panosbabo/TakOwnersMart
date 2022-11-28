@@ -1,4 +1,4 @@
-package com.example.takownersmart;
+package com.example.takownersmart.db;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

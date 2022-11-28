@@ -9,20 +9,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 // Guitar List Class extends ArrayAdapter to be used as fetch and display on the specific activity.
 public class GuitarList extends ArrayAdapter {
 
     // All important private variables for each guitar owner
-    private String guitarBrand;
-    private String[] guitarModel;
-    private String[] guitarPrice;
-    private Integer[] imageid;
-    private String[] guitarOwner;
-    private String[] ownerEmail;
-    private String[] guitardetail;
-    private Activity context;
+    private final String guitarBrand;
+    private final String[] guitarModel;
+    private final String[] guitarPrice;
+    private final Integer[] imageid;
+    private final String[] guitarOwner;
+    private final String[] ownerEmail;
+    private final String[] guitardetail;
+    private final Activity context;
 
     // Constructor for each row element
     public GuitarList (Activity context, Integer[] imageid, String guitarBrand, String[] guitarModel, String[] guitarPrice, String[] guitarOwner, String[] ownerEmail, String[] guitardetail) {

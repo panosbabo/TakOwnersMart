@@ -1,4 +1,4 @@
-package com.example.takownersmart;
+package com.example.takownersmart.db;
 
 import androidx.room.Database;
 import androidx.room.Room;

@@ -2,6 +2,7 @@ package com.example.takownersmart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +23,7 @@ import java.util.List;
 public class SearchGuitars extends AppCompatActivity {
 
     // Private variables to be used to fetch and display the context in the activity
-    private ListView listView;
-    private Activity context;
-    private List<GuitarObject> guitarExampleList = new ArrayList<>();
+    private final List<GuitarObject> guitarExampleList = new ArrayList<>();
     private String[] guitarModels;
     private String[] guitarPrice;
     private String[] guitarOwner;
@@ -31,7 +31,7 @@ public class SearchGuitars extends AppCompatActivity {
     private String[] guitarDetails;
 
     // Private string for the intended amazing Japanese Acoustic Guitar Brand named "Takamine"
-    private String guitarBrand = "Takamine";
+    private static final String guitarBrand = "Takamine";
 
     // Fetching guitar images from drawable
     private Integer imageid[] = {
@@ -43,10 +43,14 @@ public class SearchGuitars extends AppCompatActivity {
             R.drawable.ltd2020,
     };
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_guitars);
+
+        // Initializing a list view for the guitar list
+        ListView listView;
 
         // Fetching data of allegedly guitar owners from a csv file.
         readDisplayInfo();
@@ -82,7 +86,7 @@ public class SearchGuitars extends AppCompatActivity {
     private void readDisplayInfo() {
         InputStream is = getResources().openRawResource(R.raw.guitar_list);
         BufferedReader reader = new BufferedReader(
-                new InputStreamReader(is, Charset.forName("UTF-8"))
+                new InputStreamReader(is, StandardCharsets.UTF_8)
         );
         String line = "";
         try {

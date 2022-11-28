@@ -35,16 +35,32 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="67dp"
-        android:layout_marginTop="303dp"
         android:layout_marginEnd="66dp"
         android:layout_marginBottom="377dp"
-        android:text=" Your Wish List is Empty.\n\nPlease go to Search Page"
+        android:text=" Your Wish List is empty."
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.883" />
+
+    <TextView
+        android:id="@+id/hint_wishlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="303dp"
+        android:layout_marginEnd="66dp"
+        android:text="Please go to Search Page"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.203" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

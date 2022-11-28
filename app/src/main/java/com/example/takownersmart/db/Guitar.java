@@ -1,10 +1,10 @@
-package com.example.takownersmart;
+package com.example.takownersmart.db;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-// Entities for the wishlist items
+// Entities for the wishlist items of a list of guitars
 @Entity
 public class Guitar {
 

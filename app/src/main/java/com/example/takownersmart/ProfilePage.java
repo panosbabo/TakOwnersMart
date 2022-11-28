@@ -1,43 +1,16 @@
 package com.example.takownersmart;
 
-
-
-
-import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.takownersmart.Profile;
-
-import java.util.List;
-
-
-
-
-
+import com.example.takownersmart.db.ProfileDatabase;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.viewmodel.CreationExtras;
-import androidx.room.Ignore;
-import androidx.room.Room;
 
 public class ProfilePage extends Fragment {
 
@@ -50,43 +23,10 @@ public class ProfilePage extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private static final String TAG = "MainActivity";
-    private TextView txt_result;
-    private Button btn_get_result;
-
-    private TextView mUsernameText;
-    private TextView mEmailText;
-    private TextView mAddressText;
-    private TextView mGuitarText;
-    private TextView mavatarusernameText;
-    private TextView mavataremailText;
-
-    private String usrnm;
-    private String eml;
-    private String adrs;
-    private String gtr;
-
-//    private String zusrnm;
-//    private String zeml;
-//    private String zadrs;
-//    private String zgtr;
-
-
-    private Profile profileDets;
-    private ProfileDao profdao;
-
     public ProfilePage(){
         // require a empty public constructor
     }
 
-//    public ProfilePage(String usrnm, String eml, String adrs, String gtr) {
-//        this.usrnm = usrnm;
-//        this.eml = eml;
-//        this.adrs = adrs;
-//        this.gtr = gtr;
-//    }
-
-    // TODO: Rename and change types and number of parameters
     public ProfilePage newInstance(String param1, String param2) {
         ProfilePage fragment = new ProfilePage();
         Bundle args = new Bundle();
@@ -95,7 +35,6 @@ public class ProfilePage extends Fragment {
 
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,69 +46,54 @@ public class ProfilePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        TextView mUsernameText;
+        TextView mEmailText;
+        TextView mAddressText;
+        TextView mGuitarText;
+        TextView mavatarusernameText;
+        TextView mavataremailText;
+        Button editprofbtn;
+
+        String usrnm;
+        String eml;
+        String adrs;
+        String gtr;
+
         // Inflate the layout for this fragment
         View profView = inflater.inflate(R.layout.fragment_profile_page, container, false);
         // User image is initialized
         ImageView userView = (ImageView) profView.findViewById(R.id.userimage);
         userView.setImageResource(R.drawable.small_icon);
 
-//        Log.d("Profile ! Username", getArguments().getString("username"));
-//        Log.d("Profile ! Email", getArguments().getString("email"));
-//        Log.d("Profile ! Address", getArguments().getString("address"));
-//        Log.d("Profile ! Guitar", getArguments().getString("guitar"));
+        // Calling database from Profile database
+        ProfileDatabase db  = ProfileDatabase.getDbInstance(this.getContext());
 
-//        if((getArguments().getString("username") == null) || (getArguments().getString("email") == null) ||
-//                (getArguments().getString("address") == null) || (getArguments().getString("guitar") == null)) {
-//            usrnm = "Empty";
-//            eml = "Empty";
-//            adrs = "Empty";
-//            gtr = "Empty";
-//        }
-//        else {
-//            usrnm = getArguments().getString("username");
-//            eml = getArguments().getString("email");
-//            adrs = getArguments().getString("address");
-//            gtr = getArguments().getString("guitar");
-//        }
-
-//        usrnm = getArguments().getString("username");
-//        eml = getArguments().getString("email");
-//        adrs = getArguments().getString("address");
-//        gtr = getArguments().getString("guitar");
-
-//        zusrnm = getArguments().getString("username");
-//        zeml = getArguments().getString("email");
-//        zadrs = getArguments().getString("address");
-//        zgtr = getArguments().getString("guitar");
-
-//        ProfilePage newprof = new ProfilePage(zusrnm, zeml, zadrs, zgtr);
-
+        // Initializing Views to related Resource id's
         mUsernameText = profView.findViewById(R.id.usernameinsert);
         mEmailText = profView.findViewById(R.id.emailinsert);
         mAddressText = profView.findViewById(R.id.addressinsert);
         mGuitarText = profView.findViewById(R.id.guitarinsert);
         mavatarusernameText = profView.findViewById(R.id.username);
         mavataremailText = profView.findViewById(R.id.emailuser);
+        editprofbtn = profView.findViewById(R.id.editprofile_btn);
 
-        if(usrnm == null) {
+        // If-Else statement that checks if user hasn't entered details yet.
+        // Display Info as Empty
+        if(db.profileDao().getprofile().isEmpty()) {
             usrnm = "Empty";
             eml = "Empty";
             adrs = "Empty";
             gtr = "Empty";
-
-//            mUsernameText.setText("Empty");
-//            mEmailText.setText("Empty");
-//            mAddressText.setText("Empty");
-//            mGuitarText.setText("Empty");
-//            mavatarusernameText.setText("Empty");
-//            mavataremailText.setText("Empty");
         }
         else {
-//            usrnm = getArguments().getString("username");
-//            eml = getArguments().getString("email");
-//            adrs = getArguments().getString("address");
-//            gtr = getArguments().getString("guitar");
+            // Initialization from Profile database to String variables
+            usrnm = db.profileDao().getprofile().get(0).personUsername;
+            eml = db.profileDao().getprofile().get(0).personEmail;
+            adrs = db.profileDao().getprofile().get(0).personAddress;
+            gtr = db.profileDao().getprofile().get(0).personGuitar;
         }
+
+        // Displaying Info on the Profile Page
         mUsernameText.setText(usrnm);
         mEmailText.setText(eml);
         mAddressText.setText(adrs);
@@ -177,12 +101,11 @@ public class ProfilePage extends Fragment {
         mavatarusernameText.setText(usrnm);
         mavataremailText.setText(eml);
 
-
-        Button btn = (Button)profView.findViewById(R.id.editprofile_btn);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        // Button function listener for the Profile Editing page activity
+        editprofbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Creating an Intent for the next activity of the profile editing page
                 Intent intent = new Intent(ProfilePage.super.getContext(), ProfileEditing.class);
                 startActivity(intent);
 //                activityLauncher.launch(intent);
@@ -191,8 +114,6 @@ public class ProfilePage extends Fragment {
 //                fr.commit();
             }
         });
-
-        txt_result = profView.findViewById(R.id.usernameinsert);
 
         return profView;
     }

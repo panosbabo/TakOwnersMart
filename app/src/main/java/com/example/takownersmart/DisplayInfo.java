@@ -1,22 +1,16 @@
 package com.example.takownersmart;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.Objects;
+import com.example.takownersmart.db.Guitar;
+import com.example.takownersmart.db.WishListDatabase;
 
 // Activity that displays more detailed info whenever the user clicks on each guitar item
 public class DisplayInfo extends AppCompatActivity {

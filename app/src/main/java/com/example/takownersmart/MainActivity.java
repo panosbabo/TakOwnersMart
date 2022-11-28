@@ -1,20 +1,18 @@
 package com.example.takownersmart;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.room.Room;
-
 import com.example.takownersmart.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 //        fragmentTransaction.add(R.id.frame_layout, new profile_editing());
 //        fragmentTransaction.commit();
 
-        // Setting home pagefragment as the main page after the main activity is initialized
+        // Setting home page fragment as the main page after the main activity is initialized
         changeScreen(new HomePage());
 
         // Listener for the bottom nav bar items

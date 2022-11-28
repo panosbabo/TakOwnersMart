@@ -1,6 +1,5 @@
 package com.example.takownersmart;
 
-
 // Creating a guitar object to be used in a storing point in a csv file of the allegedly Takamine guitar owners.
 public class GuitarObject {
 
