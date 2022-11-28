@@ -48,10 +48,11 @@ public class SearchPage extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Calling Profile Database
         ProfileDatabase db = ProfileDatabase.getDbInstance(this.getContext());
 
-
-
+        /* If-Else statement to check whether the user has entered profile details
+        or not and display a message suggesting the user to enter details. */
         if(db.profileDao().getprofile().isEmpty()) {
             Toast.makeText(getContext(), "Please Enter Profile details first.", Toast.LENGTH_SHORT).show();
         }

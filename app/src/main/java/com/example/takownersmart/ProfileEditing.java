@@ -133,17 +133,17 @@ public class ProfileEditing extends AppCompatActivity {
                         // Message displayed for successful profile update
                         Toast.makeText(ProfileEditing.this, "Profile has been updated", Toast.LENGTH_SHORT).show();
                         // TODO: Create alternative thread for the image fetch
-//                            service.execute(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    handler.post(new Runnable() {
-//                                        @Override
-//                                        public void run() {
+//                        service.execute(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                handler.post(new Runnable() {
+//                                    @Override
+//                                    public void run() {
 //
-//                                        }
-//                                    });
-//                                }
-//                            });
+//                                    }
+//                                });
+//                            }
+//                        });
                         // Returning to previous activity as a refresh
                         finish();
                         Intent intent = new Intent(ProfileEditing.this, MainActivity.class);

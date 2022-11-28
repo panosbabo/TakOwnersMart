@@ -46,6 +46,7 @@ public class ProfilePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // Variables for TextViews to displayed on the profile page
         TextView mUsernameText;
         TextView mEmailText;
         TextView mAddressText;
@@ -54,6 +55,7 @@ public class ProfilePage extends Fragment {
         TextView mavataremailText;
         Button editprofbtn;
 
+        // String variables to store user's input
         String usrnm;
         String eml;
         String adrs;
