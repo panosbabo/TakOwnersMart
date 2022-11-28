@@ -46,7 +46,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Username:"
+                android:text="Username: "
                 android:textAlignment="viewStart"
                 android:textColor="#182693"
                 android:textSize="18sp"
@@ -54,15 +54,15 @@
 
             <EditText
                 android:id="@+id/usernameinsert"
-                android:layout_width="wrap_content"
+                android:layout_width="167dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:ems="10"
-                android:textSize="16sp"
                 android:hint="Enter username"
+                android:inputType="textPersonName"
                 android:textAlignment="viewEnd"
-                android:inputType="textPersonName"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -84,7 +84,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="Email:"
                 android:textAlignment="viewStart"
@@ -98,7 +97,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:hint="Enter email address"
                 android:textAlignment="viewEnd"
@@ -122,10 +120,9 @@
 
             <TextView
                 android:id="@+id/addresstext"
-                android:layout_width="wrap_content"
+                android:layout_width="213dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="-55dp"
                 android:layout_weight="1"
                 android:text="Address:"
@@ -138,7 +135,6 @@
                 android:id="@+id/addressinsert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:ems="10"
                 android:textSize="16sp"
@@ -166,7 +162,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:text="My Guitar:"
                 android:textAlignment="viewStart"
@@ -178,7 +173,6 @@
                 android:id="@+id/guitarinsert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:ems="10"
                 android:textSize="16sp"

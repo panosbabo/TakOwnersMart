@@ -41,6 +41,14 @@ public class ProfileEditing extends AppCompatActivity {
         mAddressEditText = findViewById(R.id.addressinsert);
         mGuitarEditText = findViewById(R.id.guitarinsert);
 
+        // Sets autofill for more convenient profile update
+        if(!db.profileDao().getprofile().isEmpty()) {
+            mUsernameEditText.setText(db.profileDao().getprofile().get(0).personUsername);
+            mEmailEditText.setText(db.profileDao().getprofile().get(0).personEmail);
+            mAddressEditText.setText(db.profileDao().getprofile().get(0).personAddress);
+            mGuitarEditText.setText(db.profileDao().getprofile().get(0).personGuitar);
+        }
+
         // Executor service to allow image fetching to an alternative thread
         ExecutorService service = Executors.newSingleThreadExecutor();
         // Creates a handle to recover the result from the

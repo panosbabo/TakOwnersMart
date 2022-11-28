@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:textColor="#ffffff"
-                        android:textSize="20sp"
+                        android:autoSizeTextType="uniform"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/userimage"
                         app:layout_constraintStart_toStartOf="@+id/userimage"
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textColor="#ffffff"
-                        android:textSize="14sp"
+                        android:autoSizeTextType="uniform"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/username"
                         app:layout_constraintStart_toStartOf="@+id/username"
@@ -109,27 +109,27 @@
 
                             <TextView
                                 android:id="@+id/usernametext"
-                                android:layout_width="wrap_content"
+                                android:layout_width="198dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
                                 android:layout_weight="1"
                                 android:text="Username:"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
-                                android:textColor="#182693"
                                 android:textAlignment="viewStart"
-                                android:layout_marginTop="10dp"/>
+                                android:textColor="#182693"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/usernameinsert"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
+                                android:autoSizeMaxTextSize="10sp"
                                 android:layout_weight="1"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
+                                android:textColor="#5B5B5B" />
 
                         </LinearLayout>
 
@@ -143,32 +143,31 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_margin="10dp">
+                            android:layout_margin="10dp"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/emailtext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="124dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:text="Email:"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
-                                android:textColor="#182693"
                                 android:textAlignment="viewStart"
-                                android:layout_marginTop="10dp"/>
+                                android:textColor="#182693"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/emailinsert"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp"
-                                android:textAlignment="viewEnd"
                                 android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"/>
+                                android:layout_marginBottom="5dp"
+                                android:layout_weight="1"
+                                android:autoSizeTextType="uniform"
+                                android:textAlignment="viewEnd"
+                                android:textColor="#5B5B5B" />
 
                         </LinearLayout>
 
@@ -187,30 +186,27 @@
 
                             <TextView
                                 android:id="@+id/addresstext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="171dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:text="Address:"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="-55dp"
-                                android:textSize="18sp"
-                                android:textColor="#182693"
                                 android:textAlignment="viewStart"
-                                android:layout_marginTop="10dp"/>
+                                android:textColor="#182693"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/addressinsert"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="5dp"
                                 android:layout_weight="1"
                                 android:autoSizeTextType="uniform"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp"
                                 android:textAlignment="viewEnd"
-                                android:layout_marginLeft="15dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"/>
+                                android:textColor="#5B5B5B"
+                                android:textSize="16sp" />
 
                         </LinearLayout>
 
@@ -229,27 +225,26 @@
 
                             <TextView
                                 android:id="@+id/guitartext"
-                                android:layout_width="wrap_content"
+                                android:layout_width="134dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
                                 android:text="Guitar:"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="18sp"
-                                android:textColor="#182693"
                                 android:textAlignment="viewStart"
-                                android:layout_marginTop="10dp"/>
+                                android:textColor="#182693"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/guitarinsert"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:textColor="#5B5B5B"
-                                android:textSize="16sp"
+                                android:autoSizeTextType="uniform"
                                 android:textAlignment="viewEnd"
                                 android:layout_marginRight="10dp"
-                                android:layout_marginTop="10dp"/>
+                                android:layout_marginBottom="5dp"/>
 
                         </LinearLayout>
 
