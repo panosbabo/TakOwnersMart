@@ -6,10 +6,21 @@
     tools:context=".SearchPage">
 
     <TextView
+        android:id="@+id/registered_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textAlignment="center"
         android:textSize="15sp"
-        android:text="      Click on the search icon\nto search for Takamine Owners" />
+        android:text="Click on the search icon\nto search for Takamine Owners" />
+
+    <TextView
+        android:id="@+id/non_registered_view"
+        android:layout_width="298dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="You need to enter Profile Details before searching for TakOwners.\n\nPlease go to Profile Page."
+        android:textSize="18sp" />
 
 </FrameLayout>

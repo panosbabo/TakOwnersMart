@@ -16,9 +16,7 @@ import java.util.List;
 
 public class MyWishList extends AppCompatActivity {
 
-    // Variables for a recycler view.
-    private RecyclerView wishListView;
-    private TextView emptyView;
+    // Variables for a recycler view adapter
     private WishListAdapter wishListAdapter;
     private List<Guitar> guitarListItems;
 
@@ -27,9 +25,15 @@ public class MyWishList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_wish_list);
 
+        // View Variables for the wishlist
+        RecyclerView wishListView;
+        TextView emptyView;
+        TextView empty_hint;
+
         // Initializing Views to the related R.id's
         wishListView = (RecyclerView) findViewById(R.id.idWishList);
         emptyView = (TextView) findViewById(R.id.empty_wishlist);
+        empty_hint = (TextView) findViewById(R.id.hint_wishlist);
 
         // Initializing Recycler View for the WishList
         initRecyclerView();
@@ -42,6 +46,7 @@ public class MyWishList extends AppCompatActivity {
         if (guitarListItems.isEmpty()) {
             wishListView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
+            empty_hint.setVisibility(View.VISIBLE);
         }
         else {
             // Creating a descent textview for the wish list page title
@@ -51,6 +56,7 @@ public class MyWishList extends AppCompatActivity {
 
             wishListView.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
+            empty_hint.setVisibility(View.GONE);
         }
     }
 
