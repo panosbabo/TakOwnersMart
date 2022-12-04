@@ -19,12 +19,25 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/avataruser_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_weight="1"/>
+
     <LinearLayout
         android:id="@+id/linearl2"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="361dp"
+        android:layout_height="357dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/white_background_profile"
         android:elevation="3dp"
@@ -95,13 +108,13 @@
                 android:id="@+id/emailinsert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="16sp"
-                android:hint="Enter email address"
-                android:textAlignment="viewEnd"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:hint="Enter email address"
+                android:inputType="textEmailAddress"
+                android:textAlignment="viewEnd"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -137,10 +150,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:ems="10"
-                android:textSize="16sp"
                 android:hint="Enter home address"
+                android:inputType="textPersonName"
                 android:textAlignment="viewEnd"
-                android:inputType="textPersonName"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -175,10 +188,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:ems="10"
-                android:textSize="16sp"
                 android:hint="Enter guitar model"
+                android:inputType="textPersonName"
                 android:textAlignment="viewEnd"
-                android:inputType="textPersonName"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -192,14 +205,30 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/insert_img_btn"
+        android:layout_width="146dp"
+        android:layout_height="43dp"
+        android:text="Insert Image"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearl2"
+        app:layout_constraintVertical_bias="0.221" />
+
+    <Button
         android:id="@+id/update_prof_btn"
         android:layout_width="146dp"
         android:layout_height="43dp"
+        android:layout_marginTop="20dp"
         android:text="Update Profile"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearl2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearl2"
+        app:layout_constraintVertical_bias="0.594" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,12 @@
 package com.example.takownersmart;
 
+import static android.content.Intent.getIntent;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +29,9 @@ public class ProfilePage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private boolean check_avatar;
+    private Uri usr_avatar;
 
     public ProfilePage(){
         // require a empty public constructor
@@ -65,7 +75,16 @@ public class ProfilePage extends Fragment {
         View profView = inflater.inflate(R.layout.fragment_profile_page, container, false);
         // User image is initialized
         ImageView userView = (ImageView) profView.findViewById(R.id.userimage);
-        userView.setImageResource(R.drawable.small_icon);
+
+        // TODO: correct the nullity when fetching image from activity
+        // User image fetched from Profile Editing page
+        if(usr_avatar == null) {
+            userView.setImageResource(R.drawable.small_icon);
+        }
+        else {
+            usr_avatar = getArguments().getParcelable("userImage");
+            userView.setImageURI(usr_avatar);
+        }
 
         // Calling database from Profile database
         ProfileDatabase db  = ProfileDatabase.getDbInstance(this.getContext());
