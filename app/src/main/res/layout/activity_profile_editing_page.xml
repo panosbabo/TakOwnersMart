@@ -19,7 +19,9 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:strokeColor="@color/white"
         android:id="@+id/avataruser_img"
         android:layout_width="150dp"
         android:layout_height="150dp"

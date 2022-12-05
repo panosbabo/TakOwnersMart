@@ -42,15 +42,18 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <ImageView
+                    <com.google.android.material.imageview.ShapeableImageView
+                        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                        app:strokeColor="@color/white"
                         android:id="@+id/userimage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginTop="30dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@tools:sample/avatars" />
+                        android:layout_weight="1"/>
 
                     <TextView
                         android:id="@+id/username"
@@ -205,8 +208,7 @@
                                 android:layout_weight="1"
                                 android:autoSizeTextType="uniform"
                                 android:textAlignment="viewEnd"
-                                android:textColor="#5B5B5B"
-                                android:textSize="16sp" />
+                                android:textColor="#5B5B5B" />
 
                         </LinearLayout>
 
