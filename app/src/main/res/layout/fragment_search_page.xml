@@ -6,13 +6,13 @@
     tools:context=".SearchPage">
 
     <TextView
-        android:id="@+id/registered_view"
-        android:layout_width="wrap_content"
+        android:id="@+id/search_title_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:textAlignment="center"
+        android:text="TakOwners Guitars List"
         android:textSize="15sp"
-        android:text="Click on the search icon\nto search for Takamine Owners" />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/non_registered_view"
@@ -22,5 +22,11 @@
         android:textAlignment="center"
         android:text="You need to enter Profile Details before searching for TakOwners.\n\nPlease go to Profile Page."
         android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"/>
 
 </FrameLayout>
