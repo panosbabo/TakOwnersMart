@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.search:
                     changeScreen(new SearchPage());
                     break;
+                case R.id.map:
+                    changeScreen(new MapPage());
+                    break;
             }
             return true;
         });
@@ -50,13 +53,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Function that allows to change between fragments.
-    private void changeScreen(Fragment fragment){
+    private void changeScreen(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-/*
+
+    /*
 Fish signature
       /`·.¸
      /¸...¸`:·
