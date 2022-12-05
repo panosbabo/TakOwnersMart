@@ -87,11 +87,6 @@ public class SearchPage extends Fragment {
         if(db.profileDao().getprofile().isEmpty()) {
             Toast.makeText(getContext(), "Please Enter Profile details first.", Toast.LENGTH_SHORT).show();
         }
-        else {
-            // Creating a new Intent for the next activity
-//            Intent intent = new Intent(SearchPage.super.getContext(), SearchGuitars.class);
-//            startActivity(intent);
-        }
     }
 
     @SuppressLint("MissingInflatedId")
@@ -107,7 +102,6 @@ public class SearchPage extends Fragment {
 
         // Initializing TextViews for the relative message
         TextView non_registered;
-        TextView registered;
 
         // Initializing a list view for the guitar list
         ListView listView;
@@ -125,20 +119,12 @@ public class SearchPage extends Fragment {
         // Data is being transferred to newly created GuitarList instance.
         transferData();
 
-        // Reference: Done a Similar example in Lab 4
-
-        // Creating a descent textview for the search page title
-//        TextView textView = new TextView(getContext());
-//        textView.setTypeface(Typeface.DEFAULT_BOLD);
-//        textView.setText("TakOwners Guitars List");
-
+        // Initializing list view to related Resource ID
         listView = (ListView) view.findViewById(R.id.list);
 
-//        listView.addHeaderView(textView);
 
         // For populating list data
         GuitarList customGuitarList = new GuitarList(getActivity(), imageid, guitarBrand, guitarModels, guitarPrice, guitarOwner, ownerEmail, guitarDetails);
-        // Reference Complete
 
         // Initializing Views to the related R.id's
         non_registered = (TextView) view.findViewById(R.id.non_registered_view);
