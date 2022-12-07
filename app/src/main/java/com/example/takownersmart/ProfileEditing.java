@@ -2,6 +2,10 @@ package com.example.takownersmart;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +14,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -133,6 +138,7 @@ public class ProfileEditing extends AppCompatActivity {
                         finish();
                         Intent intent = new Intent(ProfileEditing.this, MainActivity.class);
                         startActivity(intent);
+
                     } catch (SQLiteConstraintException e) {
                         // Message displayed for catching error of profile creation
                         Toast.makeText(ProfileEditing.this, "Profile has not been created", Toast.LENGTH_SHORT).show();
@@ -164,6 +170,7 @@ public class ProfileEditing extends AppCompatActivity {
                         finish();
                         Intent intent = new Intent(ProfileEditing.this, MainActivity.class);
                         startActivity(intent);
+
                     } catch (SQLiteConstraintException e) {
                         // Message displayed for catching error of profile update
                         Toast.makeText(ProfileEditing.this, "Profile has not been updated", Toast.LENGTH_SHORT).show();

@@ -79,10 +79,12 @@ public class MapPage extends Fragment {
                 }
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentL, 12));
 
+                // This adds markers when user taps on map
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(LatLng latLng) {
                         // When clicked on map
+
                         // Initialize marker options
                         MarkerOptions markerOptions = new MarkerOptions().position(latLng);
                         // Set position of marker

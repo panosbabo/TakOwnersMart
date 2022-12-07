@@ -2,6 +2,9 @@ package com.example.takownersmart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -52,8 +55,9 @@ public class DisplayInfo extends AppCompatActivity {
 
 
         // Button initialization for more detailed information & add to wishlist button
-        Button button_info = ((Button) findViewById(R.id.button_info));
-        Button wish_add = ((Button) findViewById(R.id.addTo_wishlist));
+        Button button_info = (Button) findViewById(R.id.button_info);
+        Button wish_add = (Button) findViewById(R.id.addTo_wishlist);
+        Button copymail = (Button) findViewById(R.id.copy_email_btn);
 
         // Button function implemented to search on the web when the user clicks on more details information
         button_info.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +87,19 @@ public class DisplayInfo extends AppCompatActivity {
                 saveItemList(brand, model, price, owner, ownemail);
             }
         });
+
+        // Button function implemented to copy email to clipboard
+        copymail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Calling clipboard manager to copy owner's email to clipboard
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("email", ownemail);
+                clipboard.setPrimaryClip(clip);
+                // Displaying message about successful copy
+                Toast.makeText(getApplicationContext(), "Email copied to clipboard", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Function that inserts the item to the database
@@ -100,24 +117,16 @@ public class DisplayInfo extends AppCompatActivity {
         guitar.guitarOwner = guitarOwner;
         guitar.ownerEmail = ownerEmail;
 
+        // Check boolean variable
+        boolean check = false;
+
         // For loop that goes through database to check if a guitar is already in the wishlist
         for (int i = 0; i < db.wishDao().getAllGuitars().size(); i++) {
             // If statement that checks if an item already exists in the database
             if (db.wishDao().getAllGuitars().get(i).guitarModel.equals(guitar.guitarModel)){
+                check = true;
                 // Message displayed if an item already exists in the wishlist
                 Toast.makeText(getApplicationContext(), "This item is already in the WishList", Toast.LENGTH_SHORT).show();
-                break;
-            }
-        }
-
-        // Check boolean variable
-        boolean check = false;
-
-        // For loop that checks if the guitar is already in the list
-        for (int i = 0; i < db.wishDao().getAllGuitars().size(); i++) {
-            // If statement that checks whether it is the list or not
-            if (db.wishDao().getAllGuitars().get(i).guitarModel.equals(guitar.guitarModel)) {
-                check = true;
                 break;
             }
         }

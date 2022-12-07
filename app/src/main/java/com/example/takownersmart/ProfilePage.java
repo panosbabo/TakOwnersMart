@@ -1,12 +1,6 @@
 package com.example.takownersmart;
 
-import static android.content.Intent.getIntent;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,14 +123,9 @@ public class ProfilePage extends Fragment {
                 // Creating an Intent for the next activity of the profile editing page
                 Intent intent = new Intent(ProfilePage.super.getContext(), ProfileEditing.class);
                 startActivity(intent);
-//                activityLauncher.launch(intent);
-//                FragmentTransaction fr = getFragmentManager().beginTransaction();
-//                fr.replace(R.id.frame_layout, new profile_editing());
-//                fr.commit();
             }
         });
 
         return profView;
     }
-
 }
