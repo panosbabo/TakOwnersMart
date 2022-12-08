@@ -77,7 +77,7 @@ public class MapPage extends Fragment {
                     LatLng posit = positions(locationList.indexOf(i), locationList.get(i).getLatitude(), locationList.get(i).getLongitude());
                     googleMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_icon)).position(posit).title(locationList.get(i).getOwnerName() + locationList.get(i).getGuitarmodelOwner()));
                 }
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentL, 12));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentL, 13));
 
                 // This adds markers when user taps on map
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {

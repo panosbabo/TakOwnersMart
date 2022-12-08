@@ -55,6 +55,10 @@ public class SearchPage extends Fragment {
             R.drawable.p7dc,
             R.drawable.ltd2016,
             R.drawable.ltd2020,
+            R.drawable.ef341sc,
+            R.drawable.gd93cenat,
+            R.drawable.ef450ctt,
+            R.drawable.gd90cezcnat
     };
 
     /**

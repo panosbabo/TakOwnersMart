@@ -38,6 +38,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishLT> {
             R.drawable.p7dc,
             R.drawable.ltd2016,
             R.drawable.ltd2020,
+            R.drawable.ef341sc,
+            R.drawable.gd93cenat,
+            R.drawable.ef450ctt,
+            R.drawable.gd90cezcnat
     };
 
     // Adapter Initialized for the inflation of the wishlist items
@@ -77,6 +81,18 @@ public class WishListAdapter extends RecyclerView.Adapter<WishLT> {
                 break;
             case "LTD2020":
                 holder.guitarImage.setImageResource(imageid[5]);
+                break;
+            case "EF341SC":
+                holder.guitarImage.setImageResource(imageid[6]);
+                break;
+            case "GD93CE-NAT":
+                holder.guitarImage.setImageResource(imageid[7]);
+                break;
+            case "EF450C-TT":
+                holder.guitarImage.setImageResource(imageid[8]);
+                break;
+            case "GD90CEZC-NAT":
+                holder.guitarImage.setImageResource(imageid[9]);
                 break;
         }
     }
