@@ -3,6 +3,9 @@ package com.example.takownersmart;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,19 +62,23 @@ public class HomePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View inflaterz = inflater.inflate(R.layout.fragment_home_page, container, false);
-        viw_wishlist = (Button)inflaterz.findViewById(R.id.wishlist_btn);
+        View view = inflater.inflate(R.layout.fragment_home_page, container, false);
+        viw_wishlist = (Button)view.findViewById(R.id.wishlist_btn);
 
         viw_wishlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomePage.super.getContext(), MyWishList.class);
-                startActivity(intent);
+            // Fragment transaction to bring my wish list on screen
+            MyWishList myList = new MyWishList();
+            // New fragment on stack
+            getActivity().getSupportFragmentManager().beginTransaction()
+             .replace(R.id.frame_layout, myList)
+             .addToBackStack(null)
+             .commit();
             }
         });
 
-        return inflaterz;
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        return view;
     }
+
 }

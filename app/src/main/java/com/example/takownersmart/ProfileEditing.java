@@ -2,10 +2,6 @@ package com.example.takownersmart;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,11 +10,8 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.View;
@@ -33,8 +26,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 // Activity that allows the user to insert and edit their personal details.
 public class ProfileEditing extends AppCompatActivity {
@@ -48,6 +39,8 @@ public class ProfileEditing extends AppCompatActivity {
     private EditText mGuitarEditText;
     private ImageView my_avatar;
     private static String picturePath;
+    private boolean check;
+    private Uri selectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +70,13 @@ public class ProfileEditing extends AppCompatActivity {
             mGuitarEditText.setText(db.profileDao().getprofile().get(0).personGuitar);
         }
 
-        // Initializing default user avatar image
-        my_avatar.setImageResource(R.drawable.ic_baseline_image_24);
+        if(!check) {
+            // Initializing default user avatar image
+            my_avatar.setImageResource(R.drawable.ic_baseline_image_24);
+        }
+        else if(check) {
+            my_avatar.setImageBitmap(bitm);
+        }
 
         // Function listener when the user clicks on update profile
         insrt_img.setOnClickListener(new View.OnClickListener() {
@@ -258,16 +256,21 @@ public class ProfileEditing extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else if (requestCode == 2) {
-                Uri selectedImage = data.getData();
+                selectedImage = data.getData();
+                try {
+                    bitm = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                    my_avatar.setImageBitmap(bitm);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 String[] filePath = {MediaStore.Images.Media.DATA};
                 Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
                 c.moveToFirst();
                 int columnIndex = c.getColumnIndex(filePath[0]);
                 String picturePath = c.getString(columnIndex);
                 c.close();
-                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                bitm = thumbnail;
-                my_avatar.setImageURI(selectedImage);
+                check = true;
+//                my_avatar.setImageURI(selectedImage);
 
                 // TODO: Still needs to be fixed, so image can be displayed on Profile Page
                 // Parsing image to Profile Page

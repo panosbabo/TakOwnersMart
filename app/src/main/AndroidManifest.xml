@@ -32,13 +32,6 @@
         </provider>
 
         <activity
-            android:name=".MyWishList"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".DisplayInfo"
             android:exported="false">
             <meta-data
