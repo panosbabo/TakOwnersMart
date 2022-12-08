@@ -73,7 +73,6 @@ public class HomePage extends Fragment {
             // New fragment on stack
             getActivity().getSupportFragmentManager().beginTransaction()
              .replace(R.id.frame_layout, myList)
-             .addToBackStack(null)
              .commit();
             }
         });
