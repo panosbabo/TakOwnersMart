@@ -20,19 +20,18 @@
         android:textStyle="bold" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
-        app:strokeColor="@color/white"
         android:id="@+id/avataruser_img"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:scaleType="centerCrop"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_weight="1"/>
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:strokeColor="@color/white" />
 
     <Button
         android:id="@+id/insert_img_btn"
@@ -45,14 +44,14 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avataruser_img"
-        app:layout_constraintVertical_bias="0.631" />
+        app:layout_constraintVertical_bias="0.526" />
 
     <LinearLayout
         android:id="@+id/linearl2"
-        android:layout_width="361dp"
+        android:layout_width="match_parent"
         android:layout_height="357dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="264dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/white_background_profile"
         android:elevation="3dp"
