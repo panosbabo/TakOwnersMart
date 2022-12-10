@@ -3,7 +3,7 @@
 Author: Panosbabo </br>
 
 ## Description of the project
-"TakOwnersMart" is a project that aims to a specific Acoustic Guitar owners of a brand named "Takamine", where the user is able to find other users selling their guitar within a certain range.
+"TakOwnersMart" is a project that aims to a specific Acoustic Guitar owners of a brand named "Takamine", where the user is able to find allegedly other users selling their guitar within a certain range.
 
 ## Technology Selection
 
