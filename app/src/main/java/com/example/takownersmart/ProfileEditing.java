@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,15 +31,14 @@ public class ProfileEditing extends AppCompatActivity {
 
     //Private variables and "update profile" button
     private Context context;
-    private Bitmap bitm;
+    private Bitmap myImage;
     private EditText mUsernameEditText;
     private EditText mEmailEditText;
     private EditText mAddressEditText;
     private EditText mGuitarEditText;
     private ImageView my_avatar;
-    private static String picturePath;
-    private boolean check;
     private Uri selectedImage;
+    private static String picturePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +68,8 @@ public class ProfileEditing extends AppCompatActivity {
             mGuitarEditText.setText(db.profileDao().getprofile().get(0).personGuitar);
         }
 
-        if(!check) {
-            // Initializing default user avatar image
-            my_avatar.setImageResource(R.drawable.ic_baseline_image_24);
-        }
-        else if(check) {
-            my_avatar.setImageBitmap(bitm);
-        }
+        // Initializing default user avatar image
+        my_avatar.setImageResource(R.drawable.ic_baseline_image_24);
 
         // Function listener when the user clicks on update profile
         insrt_img.setOnClickListener(new View.OnClickListener() {
@@ -179,20 +172,12 @@ public class ProfileEditing extends AppCompatActivity {
     }
 
     // Reference: Some parts of the code below was taken from an online example -> https://stackoverflow.com/questions/10165302/dialog-to-pick-image-from-gallery-or-from-camera
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
-        return true;
-    }
-
+    // Function called for the user to select image from Gallery or Take Photo
     private void selectImage() {
-
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileEditing.this);
         builder.setTitle("Add Photo");
         builder.setItems(options, new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if (options[item].equals("Take Photo")) {
@@ -213,11 +198,13 @@ public class ProfileEditing extends AppCompatActivity {
         builder.show();
     }
 
+    // On activity result which fetches image file directory and decodes it to Bitmap and Displays it on the activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
+                // Temp file creation
                 File f = new File(Environment.getExternalStorageDirectory().toString());
                 for (File temp : f.listFiles()) {
                     if (temp.getName().equals("temp.jpg")) {
@@ -227,6 +214,7 @@ public class ProfileEditing extends AppCompatActivity {
                     }
                 }
                 try {
+                    // Image decoded to Bitmap
                     Bitmap bitmap;
                     BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
                     bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
@@ -247,19 +235,17 @@ public class ProfileEditing extends AppCompatActivity {
                         outFile.close();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else if (requestCode == 2) {
+                // Image fetched from Gallery
                 selectedImage = data.getData();
                 try {
-                    bitm = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-                    my_avatar.setImageBitmap(bitm);
+                    myImage = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                    // Image displayed on screen
+                    my_avatar.setImageBitmap(myImage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -269,15 +255,6 @@ public class ProfileEditing extends AppCompatActivity {
                 int columnIndex = c.getColumnIndex(filePath[0]);
                 String picturePath = c.getString(columnIndex);
                 c.close();
-                check = true;
-//                my_avatar.setImageURI(selectedImage);
-
-                // TODO: Still needs to be fixed, so image can be displayed on Profile Page
-                // Parsing image to Profile Page
-                ProfilePage fragment = new ProfilePage();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("userImage", selectedImage);
-                fragment.setArguments(bundle);
             }
         }
     }
